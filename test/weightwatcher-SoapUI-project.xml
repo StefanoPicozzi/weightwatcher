@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="e514b26b-2d45-49ff-abae-5962ddd34bc0" activeEnvironment="Default" name="weightwatcher" resourceRoot="" soapui-version="5.1.3" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:RestService" id="691d981f-8265-4b0a-a107-60d7da4b64c6" wadlVersion="http://wadl.dev.java.net/2009/02" name="http://localhost:8080" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart=""/><con:endpoints><con:endpoint>http://192.168.59.103:8080</con:endpoint><con:endpoint>http://209.132.178.226:8080</con:endpoint><con:endpoint>http://localhost:8080</con:endpoint></con:endpoints><con:resource name="Server" path="/kie-server/services/rest/server/containers" id="55b2f2da-e3d0-4538-b8c0-bfdedfe2ec49"><con:settings/><con:parameters/><con:method name="Decision Server Information" id="18e7c420-2ec3-4f2d-a6f8-9fa33ed58e88" method="GET"><con:settings/><con:parameters/><con:representation type="FAULT"><con:mediaType>text/html;charset=utf-8</con:mediaType><con:status>401 400 405</con:status><con:params/><con:element>html</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/xml</con:mediaType><con:status>200</con:status><con:params/><con:element>response</con:element></con:representation><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/><con:element>batch-execution</con:element></con:representation><con:request name="Request 1" id="2deabb86-d055-41e2-87c0-2039b74a49bb" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request>
+
+&lt;list/>
+
+
+
+
+</con:request><con:originalUri>http://localhost/kie-server/services/rest/server/</con:originalUri><con:credentials><con:username>spicozzi</con:username><con:password>jbossbrms1!</con:password><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource><con:resource name="Containers" path="/kie-server/services/rest/server/containers/watch" id="60d78ba8-b9b6-42f5-9afa-c5fa61e7efa5"><con:settings/><con:parameters/><con:method name="Containers" id="ccc1c243-602b-46fe-8ef0-a792e1cf0b10" method="GET"><con:settings/><con:parameters/><con:representation type="FAULT"><con:mediaType>text/html;charset=utf-8</con:mediaType><con:status>401 405</con:status><con:params/><con:element>html</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/xml</con:mediaType><con:status>200</con:status><con:params/><con:element>response</con:element></con:representation><con:representation type="REQUEST"><con:mediaType>application/xml</con:mediaType><con:params/><con:element>batch-execution</con:element></con:representation><con:request name="Request 1" id="cfec6b81-44ac-4c42-aab2-63cd38ef70f1" mediaType="application/xml" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request>  &lt;batch-execution lookup="weightwatchersession" >
+
+  &lt;list-containers/>
+
+  &lt;/batch-execution>
+
+</con:request><con:originalUri>http://localhost/kie-server/services/rest/server/containers</con:originalUri><con:credentials><con:username>spicozzi</con:username><con:password>jbossbrms1!</con:password><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder/></con:request></con:method><con:method name="Create Container" id="9056346f-d811-4fdd-aca6-7bd4f87795c6" method="PUT"><con:settings/><con:parameters/><con:representation type="FAULT"><con:mediaType>text/html;charset=utf-8</con:mediaType><con:status>405 400</con:status><con:params/><con:element>html</con:element></con:representation><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/><con:element>kie-container</con:element></con:representation><con:representation type="REQUEST"><con:mediaType>application/xml</con:mediaType><con:params/><con:element>kie-container</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/xml</con:mediaType><con:status>400</con:status><con:params/><con:element>response</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/xml</con:mediaType><con:status>201</con:status><con:params/><con:element>response</con:element></con:representation><con:request name="Request 1" id="732544ad-6080-4637-b894-eeba0e084138" mediaType="application/xml" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request><![CDATA[<kie-container>
+       <container-id>watch</container-id>
+       <status/> 
+       <release-id>
+            <group-id>com.redhat</group-id>
+            <artifact-id>weightwatcher</artifact-id>
+            <version>1.0</version>
+      </release-id>
+     <resolved-release-id/>
+</kie-container>
+]]></con:request><con:originalUri>http://localhost/kie-server/services/rest/server/containers</con:originalUri><con:credentials><con:username>spicozzi</con:username><con:password>jbossbrms1!</con:password><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource><con:resource name="weightwatcher" path="/kie-server/services/rest/server/containers" id="a8565c12-9a28-4c74-aba8-3ae0220de43d"><con:settings/><con:parameters/><con:method name="weightwatcher" id="c5f0bd26-3458-42bb-81e0-e61e64014c62" method="POST"><con:settings/><con:parameters/><con:representation type="FAULT"><con:mediaType>text/html;charset=utf-8</con:mediaType><con:status>401 405 403</con:status><con:params/><con:element>html</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/xml</con:mediaType><con:status>200</con:status><con:params/><con:element>response</con:element></con:representation><con:representation type="REQUEST"><con:mediaType>application/xml</con:mediaType><con:params/><con:element>batch-execution</con:element></con:representation><con:request name="Request 1" id="31f1d029-fbbe-4f11-82f5-5349fc061d8b" mediaType="application/xml" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request>  &lt;batch-execution lookup="watchsession" >
+
+  &lt;list-containers/>
+  
+  &lt;/batch-execution></con:request><con:originalUri>http://localhost/kie-server/services/rest/server/containers/satimetrycontainer</con:originalUri><con:credentials><con:username>spicozzi</con:username><con:password>jbossbrms1!</con:password><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource><con:resource name="APIs" path="/kie-server/services/rest/server/containers/watch" id="236bfea0-30ba-46bc-8f3f-93ba5a496d8b"><con:settings/><con:parameters/><con:method name="getFactin" id="cc68e8b4-622b-461e-9c38-8175c987e0c6" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/xml</con:mediaType><con:params/><con:element>batch-execution</con:element></con:representation><con:representation type="FAULT"><con:mediaType>text/html;charset=utf-8</con:mediaType><con:status>401</con:status><con:params/><con:element>html</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/xml</con:mediaType><con:status>200</con:status><con:params/><con:element>response</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:request name="Request 1" id="0d5c1bce-a958-48b8-900f-52e7d9122232" mediaType="application/xml" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request><![CDATA[<batch-execution lookup="watchsession" >
+	<insert-elements return-object="false">
+		<com.redhat.weightwatcher.Fact>
+			<factid>1</factid>
+			<facttype>1</facttype>
+			<facttxt>Incoming</facttxt>
+		</com.redhat.weightwatcher.Fact>
+		<com.redhat.weightwatcher.Fact>
+			<factid>2</factid>
+			<facttype>1</facttype>
+			<facttxt>Incoming</facttxt>
+		</com.redhat.weightwatcher.Fact>
+	</insert-elements>
+	<fire-all-rules/>
+	<query out-identifier="Factin" name="getFactin"/>
+</batch-execution>
+]]></con:request><con:originalUri>http://localhost/kie-server/services/rest/server/containers/watch</con:originalUri><con:credentials><con:username>spicozzi</con:username><con:password>jbossbrms1!</con:password><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="Weight Watch" id="20c088ab-6932-449f-bfe1-cc46606bc36c" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/xml</con:mediaType><con:params/><con:element>batch-execution</con:element></con:representation><con:representation type="FAULT"><con:mediaType>text/html;charset=utf-8</con:mediaType><con:status>401 415</con:status><con:params/><con:element>html</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/xml</con:mediaType><con:status>200</con:status><con:params/><con:element>response</con:element></con:representation><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="REQUEST"><con:mediaType>application/x-www-form-urlencoded</con:mediaType><con:params/></con:representation><con:request name="Request 1" id="120a14d9-a3a1-4e5f-996a-67e3a31f7cd5" mediaType="application/xml" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting><con:setting id="RecordRequestRepresentations">true</con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request><![CDATA[<batch-execution lookup="watchsession" >
+	<insert-elements return-object="false">
+	
+		<com.redhat.weightwatcher.Fact>
+			<factid>1</factid>
+			<facttype>1</facttype>
+			<factname>Participant</factname>
+			<factjson>{ "userid" : 1, "username" : "bfskinner@behaviorist.org" }</factjson>
+			<facttxt>Incoming Participant JSON</facttxt>
+		</com.redhat.weightwatcher.Fact>
+		<com.redhat.weightwatcher.Fact>
+			<factid>2</factid>
+			<facttype>1</facttype>
+			<factname>Participant</factname>
+			<factjson>{ "userid" : 2, "username" : "ipavlov@behaviorist.org" }</factjson>
+			<facttxt>Incoming Participant JSON</facttxt>
+		</com.redhat.weightwatcher.Fact>
+		
+		<com.redhat.weightwatcher.Fact>
+			<factid>1</factid>
+			<facttype>1</facttype>
+			<factname>Goal</factname>
+			<factjson>{ "userid" : 2, "goalname" : "weight", target : 65, start : 75, low : 60, high : 68 }</factjson>
+			<facttxt>Incoming Goal JSON</facttxt>
+		</com.redhat.weightwatcher.Fact>
+		<com.redhat.weightwatcher.Fact>
+			<factid>2</factid>
+			<facttype>1</facttype>
+			<factname>Goal</factname>
+			<factjson>{ "userid" : 1, "goalname" : "weight", target : 75, start : 84, low : 70, high : 78 }</factjson>
+			<facttxt>Incoming Goal JSON</facttxt>
+		</com.redhat.weightwatcher.Fact>
+		
+		<com.redhat.weightwatcher.Fact>
+			<factid>1</factid>
+			<facttype>1</facttype>
+			<factname>Observation</factname>
+			<factjson>{ "userid" : 1, "obsdate" : "2015-04-20 07:15:00 EST", "obsname" : "weight", "obsvalue" : 80 }</factjson>
+			<facttxt>Incoming Observation JSON</facttxt>
+		</com.redhat.weightwatcher.Fact>
+		<com.redhat.weightwatcher.Fact>
+			<factid>2</factid>
+			<facttype>1</facttype>
+			<factname>Observation</factname>
+			<factjson>{ "userid" : 1, "obsdate" : "2015-04-21 08:15:00 EST", "obsname" : "weight", "obsvalue" : 79 }</factjson>
+			<facttxt>Incoming Observation JSON</facttxt>
+		</com.redhat.weightwatcher.Fact>
+		<com.redhat.weightwatcher.Fact>
+			<factid>3</factid>
+			<facttype>1</facttype>
+			<factname>Observation</factname>
+			<factjson>{ "userid" : 1, "obsdate" : "2015-04-22 09:15:00 EST", "obsname" : "weight", "obsvalue" : 78 }</factjson>
+			<facttxt>Incoming Observation JSON</facttxt>
+		</com.redhat.weightwatcher.Fact>
+		<com.redhat.weightwatcher.Fact>
+			<factid>4</factid>
+			<facttype>1</facttype>
+			<factname>Observation</factname>
+			<factjson>{ "userid" : 2, "obsdate" : "2015-04-20 05:15:00 EST", "obsname" : "weight", "obsvalue" : 70 }</factjson>
+			<facttxt>Incoming Observation JSON</facttxt>
+		</com.redhat.weightwatcher.Fact>
+		<com.redhat.weightwatcher.Fact>
+			<factid>6</factid>
+			<facttype>1</facttype>
+			<factname>Observation</factname>
+			<factjson>{ "userid" : 2, "obsdate" : "2015-04-21 06:15:00 EST", "obsname" : "weight", "obsvalue" : 69 }</factjson>
+			<facttxt>Incoming Observation JSON</facttxt>
+		</com.redhat.weightwatcher.Fact>
+		<com.redhat.weightwatcher.Fact>
+			<factid>4</factid>
+			<facttype>1</facttype>
+			<factname>Observation</factname>
+			<factjson>{ "userid" : 2, "obsdate" : "2015-04-22 07:15:00 EST", "obsname" : "weight", "obsvalue" : 68 }</factjson>
+			<facttxt>Incoming Observation JSON</facttxt>
+		</com.redhat.weightwatcher.Fact>
+		
+	</insert-elements>
+	<fire-all-rules/>
+	<query out-identifier="Watch" name="getWatch"/>
+</batch-execution>
+]]></con:request><con:originalUri>http://localhost/kie-server/services/rest/server/containers/watch</con:originalUri><con:credentials><con:username>spicozzi</con:username><con:password>jbossbrms1!</con:password><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="GAS Watch" id="20c088ab-6932-449f-bfe1-cc46606bc36c" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/xml</con:mediaType><con:params/><con:element>batch-execution</con:element></con:representation><con:representation type="FAULT"><con:mediaType>text/html;charset=utf-8</con:mediaType><con:status>401 415 400</con:status><con:params/><con:element>html</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/xml</con:mediaType><con:status>200</con:status><con:params/><con:element>response</con:element></con:representation><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="REQUEST"><con:mediaType>application/x-www-form-urlencoded</con:mediaType><con:params/></con:representation><con:request name="Request 1" id="120a14d9-a3a1-4e5f-996a-67e3a31f7cd5" mediaType="application/xml" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting><con:setting id="RecordRequestRepresentations">true</con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request><![CDATA[<batch-execution lookup="watchsession" >
+	<insert-elements return-object="false">
+	
+		<com.redhat.weightwatcher.Fact>
+			<factid>1</factid>
+			<facttype>1</facttype>
+			<factname>Participant</factname>
+			<factjson>{ "userid" : 1, "username" : "bfskinner@behaviorist.org" }</factjson>
+			<facttxt>Incoming Participant</facttxt>
+		</com.redhat.weightwatcher.Fact>
+		
+		<com.redhat.weightwatcher.Fact>
+			<factid>1</factid>
+			<facttype>1</facttype>
+			<factname>GAS</factname>
+			<factjson>{ "userid" : 1, "goalname" : "fastdiet", besthi  : 7, bestlo  : 4,  morehi  : 3, morelo  : 3, exphi   : 2, explo   : 2, lesshi  : 1, lesslo  : 1, worsthi : 0, worstlo : 0 } </factjson>
+			<facttxt>Incoming GAS</facttxt>
+		</com.redhat.weightwatcher.Fact>
+
+		<com.redhat.weightwatcher.Fact>
+			<factid>1</factid>
+			<facttype>1</facttype>
+			<factname>Observation</factname>
+			<factjson>{ "userid" : 1, "obsdate" : "2015-04-19 07:15:00 EST", "obsname" : "fastdiet", "obsvalue" : 2 }</factjson>
+			<facttxt>Incoming Observation JSON</facttxt>
+		</com.redhat.weightwatcher.Fact>
+		<com.redhat.weightwatcher.Fact>
+			<factid>2</factid>
+			<facttype>1</facttype>
+			<factname>Observation</factname>
+			<factjson>{ "userid" : 1, "obsdate" : "2015-04-12 08:15:00 EST", "obsname" : "fastdiet", "obsvalue" : 0 }</factjson>
+			<facttxt>Incoming Observation JSON</facttxt>
+		</com.redhat.weightwatcher.Fact>
+		<com.redhat.weightwatcher.Fact>
+			<factid>3</factid>
+			<facttype>1</facttype>
+			<factname>Observation</factname>
+			<factjson>{ "userid" : 1, "obsdate" : "2015-04-05 09:15:00 EST", "obsname" : "fastdiet", "obsvalue" : 0 }</factjson>
+			<facttxt>Incoming Observation JSON</facttxt>
+		</com.redhat.weightwatcher.Fact>
+		<com.redhat.weightwatcher.Fact>
+			<factid>4</factid>
+			<facttype>1</facttype>
+			<factname>Observation</factname>
+			<factjson>{ "userid" : 1, "obsdate" : "2015-03-29 05:15:00 EST", "obsname" : "fastdiet", "obsvalue" : 0 }</factjson>
+			<facttxt>Incoming Observation JSON</facttxt>
+		</com.redhat.weightwatcher.Fact>
+		<com.redhat.weightwatcher.Fact>
+			<factid>6</factid>
+			<facttype>1</facttype>
+			<factname>Observation</factname>
+			<factjson>{ "userid" : 1, "obsdate" : "2015-03-22 06:15:00 EST", "obsname" : "fastdiet", "obsvalue" : 0 }</factjson>
+			<facttxt>Incoming Observation JSON</facttxt>
+		</com.redhat.weightwatcher.Fact>
+		<com.redhat.weightwatcher.Fact>
+			<factid>4</factid>
+			<facttype>1</facttype>
+			<factname>Observation</factname>
+			<factjson>{ "userid" : 1, "obsdate" : "2015-03-15 07:15:00 EST", "obsname" : "fastdiet", "obsvalue" : 1 }</factjson>
+			<facttxt>Incoming Participant JSON</facttxt>
+		</com.redhat.weightwatcher.Fact>
+		
+	</insert-elements>
+	<fire-all-rules/>
+	<query out-identifier="Watch" name="getWatch"/>
+</batch-execution>
+
+]]></con:request><con:originalUri>http://localhost/kie-server/services/rest/server/containers/watch</con:originalUri><con:credentials><con:username>spicozzi</con:username><con:password>jbossbrms1!</con:password><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource><con:resource name="repositories" path="/business-central/rest/repositories" id="b9d40951-ef53-44f6-acec-4b54a15a9ead"><con:settings/><con:parameters/><con:method name="Repositories" id="7631602a-24f0-4081-89c9-30b651444481" method="GET"><con:settings/><con:parameters/><con:representation type="FAULT"><con:mediaType>text/html;charset=utf-8</con:mediaType><con:status>404</con:status><con:params/><con:element>html</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:request name="Request 1" id="1da74bcf-6ce1-4c0e-8ecc-862c564486a3" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://192.168.59.103:8080</con:endpoint><con:request/><con:originalUri>http://192.168.59.103/repositories</con:originalUri><con:credentials><con:username>spicozzi</con:username><con:password>jbossbrms1!</con:password><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource></con:interface><con:endpointStrategy xsi:type="con:DefaultEndpointStrategy" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:endpoint mode="COMPLEMENT" username="spicozzi" password="jbossbrms1!">http://209.132.178.226:8080</con:endpoint><con:endpoint mode="COMPLEMENT" username="spicozzi" password="jbossbrms1!">http://localhost:8080</con:endpoint><con:endpoint mode="COMPLEMENT" username="spicozzi" password="jbossbrms1!">http://192.168.59.103:8080</con:endpoint></con:endpointStrategy><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
