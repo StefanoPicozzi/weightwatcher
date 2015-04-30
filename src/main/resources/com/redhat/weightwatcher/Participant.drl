@@ -1,0 +1,24 @@
+package com.redhat.weightwatcher;
+
+import org.json.JSONObject;
+
+
+rule "ruleInsertParticipant"
+	salience 10000
+when
+    fact : Fact( factname == "Participant" )
+then
+    JSONObject factjson = new JSONObject( fact.getFactjson( ).toString( ) );
+    Integer userid = new Integer( Integer.parseInt( factjson.get("userid").toString( ) ) );
+    String username = new String( factjson.get("username").toString( )  );
+    Participant participant = new Participant( userid, username );
+    insert( participant );
+	System.out.println("==>username=" + username);
+    System.out.println("==>weightwatcher " + drools.getRule( ).getName( ) + "->" + 
+		participant.getUserid( )  + ":" + participant.getUsername( ) );
+end
+
+query "getParticipant"
+	participant : Participant( )
+end
+

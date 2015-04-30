@@ -1,0 +1,53 @@
+package com.redhat.weightwatcher;
+
+import org.json.JSONObject;
+import com.redhat.weightwatcher.GAS;
+
+function void print(String txt) {
+   System.out.println(txt);
+}
+
+rule "ruleInsertGAS"
+	salience 10000
+when
+    	fact : Fact( factname == "GAS" )
+then
+        JSONObject factjson = new JSONObject( fact.getFactjson( ).toString( ) );
+
+        Integer userid = new Integer( Integer.parseInt( factjson.get("userid").toString( ) ) );
+       	String goalname = new String( factjson.get("goalname").toString( )  );
+        Integer besthi = new Integer( Integer.parseInt( factjson.get( "besthi" ).toString( ) ) );
+        Integer bestlo = new Integer( Integer.parseInt( factjson.get( "bestlo" ).toString( ) ) );
+        Integer morehi = new Integer( Integer.parseInt( factjson.get( "morehi" ).toString( ) ) );
+        Integer morelo = new Integer( Integer.parseInt( factjson.get( "morelo" ).toString( ) ) );
+        Integer exphi = new Integer( Integer.parseInt( factjson.get( "exphi" ).toString( ) ) );
+        Integer explo = new Integer( Integer.parseInt( factjson.get( "explo" ).toString( ) ) );
+        Integer lesshi = new Integer( Integer.parseInt( factjson.get( "lesshi" ).toString( ) ) );
+        Integer lesslo = new Integer( Integer.parseInt( factjson.get( "lesslo" ).toString( ) ) );
+        Integer worsthi = new Integer( Integer.parseInt( factjson.get( "worsthi" ).toString( ) ) );
+        Integer worstlo = new Integer( Integer.parseInt( factjson.get( "worstlo" ).toString( ) ) );
+
+    	GAS gas = new GAS(  );
+	   gas.setUserid( userid );
+	   gas.setGoalname( goalname );
+	   gas.setBesthi( besthi );
+	   gas.setBestlo( bestlo );
+	   gas.setMorehi( morehi );
+	   gas.setMorelo( morelo );
+	   gas.setExphi( exphi );
+	   gas.setExplo( explo );
+	   gas.setLesshi( lesshi );
+	   gas.setLesslo( lesslo );
+	   gas.setWorsthi( worsthi );
+	   gas.setWorstlo( worstlo );
+	
+    	insert( gas );
+
+    	System.out.println("==>weightwatcher " + drools.getRule( ).getName( ) + "->" + 
+					gas.getUserid( )  + ":" + gas.getGoalname( ) );
+end
+
+query "getGAS"
+	gas : GAS( )
+end
+

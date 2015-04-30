@@ -1,0 +1,34 @@
+package com.redhat.weightwatcher;
+
+import org.json.JSONObject;
+import java.util.Date; 
+import java.text.SimpleDateFormat;
+import com.redhat.weightwatcher.Observation;
+
+rule "ruleInsertObservation"
+	salience 10000
+when
+    fact : Fact( factname == "Observation" )
+then
+    JSONObject factjson = new JSONObject( fact.getFactjson( ).toString( ) );
+
+    Integer userid = new Integer( Integer.parseInt( factjson.get("userid").toString( ) ) );
+    SimpleDateFormat factSDF = new SimpleDateFormat("yyyy-M-d HH:mm:ss zzz");
+    Date obsdate = factSDF.parse( factjson.get("obsdate").toString() );
+	Integer obsvalue = new Integer( Integer.parseInt( factjson.get("obsvalue").toString( ) ) );
+    String obsname = factjson.get( "obsname" ).toString( );
+
+    Observation observation = new Observation( );
+    observation.setUserid( userid );
+    observation.setObsname( obsname );
+	observation.setObsdate ( obsdate );
+	observation.setObsvalue( obsvalue ); 
+    insert( observation );
+
+    print("==>weightwatcher " + drools.getRule( ).getName( ) + "->" + 
+	observation.getUserid( )  + ":" + observation.getObsname( ) + ":" + observation.getObsdate( ) );
+end
+
+query "getObservation"
+	observation : Observation( )
+end

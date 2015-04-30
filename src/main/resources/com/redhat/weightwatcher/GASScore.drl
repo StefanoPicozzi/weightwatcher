@@ -1,0 +1,92 @@
+package com.redhat.weightwatcher;
+
+import org.json.JSONObject;
+import java.util.Date; 
+import java.text.SimpleDateFormat;
+ 
+import com.redhat.weightwatcher.Observation;
+import com.redhat.weightwatcher.GAS;
+
+global java.util.HashMap output;
+global SimpleDateFormat inSDF;
+global SimpleDateFormat outSDF;
+
+rule "ruleBestCount"
+  	salience -100
+  	no-loop true
+when
+    	$participant : Participant(  )
+	$gas : GAS( userid == $participant.userid )
+    	$obscounttotal : Number( intValue > 0) from accumulate(
+      		Observation( $obscount : obsvalue == 2, $participant.userid == userid, obsname == $gas.goalname ) over window:time( 60d ),
+     		count( $obscount ) )
+then
+    	Date today = new Date();
+
+    	java.util.Date date = new Date();
+    	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    	String datef = sdf.format( date );
+
+	String rulename= new String( drools.getRule().getName( ) );
+	Integer userid = $participant.getUserid( );
+	String factname = new String( "Watch" );
+	String username = new String( $participant.getUsername( ) );
+	String facttxt = new String( "Weightwatcher says that for " + $gas.getGoalname( ) + ", " + username + " attained best outcome " + 
+		$obscounttotal  + " times over the past 60 days" );
+
+	JSONObject factjson = new JSONObject( );
+	factjson.put("userid", userid);
+	factjson.put("obsvalue", $obscounttotal);
+	factjson.put("facttxt", rulename);
+	System.out.println( factjson.toString( ) );
+
+	Fact $fact = new Fact( );
+	$fact.setFactid( 999 );
+	$fact.setFacttype ( 0 );
+	$fact.setFactname( factname );
+	$fact.setFacttxt( facttxt );
+	$fact.setFactjson( factjson.toString( ) );
+	insert( $fact );
+
+   	System.out.println( "==>weightwatcher " + rulename + ":" + $obscounttotal );
+end
+
+rule "ruleExpectedCount"
+  	salience -100
+  	no-loop true
+when
+    	$participant : Participant(  )
+	$gas : GAS( userid == $participant.userid )
+    	$obscounttotal : Number( intValue > 0) from accumulate(
+      		Observation( $obscount : obsvalue >= 0, $participant.userid == userid, obsname == $gas.goalname ) over window:time( 60d ),
+     		count( $obscount ) )
+then
+    	Date today = new Date();
+
+    	java.util.Date date = new Date();
+    	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    	String datef = sdf.format( date );
+
+	String rulename= new String( drools.getRule().getName( ) );
+	Integer userid = $participant.getUserid( );
+	String factname = new String( "Watch" );
+	String username = new String( $participant.getUsername( ) );
+	String facttxt = new String( "Weightwatcher says that for " + $gas.getGoalname( ) + ", " + username + " attained expected outcome or better " + 
+		$obscounttotal  + " times over the past 60 days" );
+
+	JSONObject factjson = new JSONObject( );
+	factjson.put("userid", userid);
+	factjson.put("obsvalue", $obscounttotal);
+	factjson.put("facttxt", rulename);
+	System.out.println( factjson.toString( ) );
+
+	Fact $fact = new Fact( );
+	$fact.setFactid( 999 );
+	$fact.setFacttype ( 0 );
+	$fact.setFactname( factname );
+	$fact.setFacttxt( facttxt );
+	$fact.setFactjson( factjson.toString( ) );
+	insert( $fact );
+
+   	System.out.println( "==>weightwatcher" + rulename + ":" + $obscounttotal );
+end

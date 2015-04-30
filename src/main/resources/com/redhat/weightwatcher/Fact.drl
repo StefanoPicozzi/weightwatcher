@@ -1,0 +1,15 @@
+package com.redhat.weightwatcher;
+
+import com.redhat.weightwatcher.Fact;
+
+query "getFactout"
+    fact : Fact( facttype == 0 )
+end
+
+query "getFactin"
+    fact : Fact( facttype == 1 )
+end
+
+query "getWatch"
+	fact : Fact( factname == "Watch" );
+end

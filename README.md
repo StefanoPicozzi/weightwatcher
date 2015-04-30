@@ -29,8 +29,8 @@ Login to http://localhost:8080/business-central (u:spicozzi / p:jbossbrms1! )
 
 Enjoy installed and configured JBoss BRMS 6.
 
-Docker Deployment
------------------
+Container Deployment
+--------------------
 
 The following steps can be used to configure and run the demo in a docker container
 

@@ -1,0 +1,128 @@
+package com.redhat.weightwatcher;
+
+import org.json.JSONObject;
+import java.util.Date; 
+import java.text.SimpleDateFormat;
+
+import com.redhat.weightwatcher.Participant;
+import com.redhat.weightwatcher.Observation;
+import com.redhat.weightwatcher.Fact;
+
+rule "ruleAverageWeight"
+   	salience -1000
+   	no-loop true
+when
+    $participant : Participant()
+    $obsvalueaverage : Number( doubleValue > 0 ) from accumulate(
+        Observation( $obsvalue : obsvalue > 0, $participant.userid == userid, obsname == "weight" ) over window:time( 7d ),
+    	average( $obsvalue ) )
+then
+	Date today = new Date( ); 
+    java.util.Date date = new Date( );
+    SimpleDateFormat sdf = new SimpleDateFormat( "yyyy-M-d HH:mm:ss zzz" );
+    String datef = sdf.format( date );
+
+	String rulename= new String( drools.getRule().getName( ) );
+	Integer userid = $participant.getUserid( );
+	String factname = new String( "Watch" );
+	String username = new String( $participant.getUsername( ) );
+	String facttxt = new String( "Weightwatcher says that " + username + " WEIGHT averaged " + 
+	String.format( "%.2f", $obsvalueaverage ) + " over the past 7 days" );
+
+	JSONObject factjson = new JSONObject( );
+	factjson.put("userid", userid);
+	factjson.put("obsvalue", $obsvalueaverage);
+	factjson.put("facttxt", rulename);
+	System.out.println( factjson.toString( ) );
+
+	Fact $fact = new Fact( );
+	$fact.setFactid( 999 );
+	$fact.setFacttype ( 0 );
+	$fact.setFactname( factname );
+	$fact.setFacttxt( facttxt );
+	$fact.setFactjson( factjson.toString( ) );
+	insert( $fact );
+
+   	System.out.println( "==>weightwatcher " + rulename + ":" + $obsvalueaverage );
+end
+
+rule "ruleHighWeight"
+   	salience -1000
+   	no-loop true
+when
+    $participant : Participant()
+    $obsvaluehigh : Number( doubleValue > 0 ) from accumulate(
+        Observation( $obsvalue : obsvalue > 0, $participant.userid == userid, obsname == "weight" ) over window:time( 30d ),
+        max( $obsvalue ) )
+then
+	Date today = new Date( ); 
+      	java.util.Date date = new Date( );
+      	SimpleDateFormat sdf = new SimpleDateFormat( "yyyy-M-d HH:mm:ss zzz" );
+      	String datef = sdf.format( date );
+
+	String rulename= new String( drools.getRule().getName( ) );
+	Integer userid = $participant.getUserid( );
+	String factname = new String( "Watch" );
+	String username = new String( $participant.getUsername( ) );
+	String facttxt = new String( "Weightwatcher says that " + username + " WEIGHT maximum was " + 
+	String.format( "%.2f", $obsvaluehigh ) + " over the past 30 days" );
+
+	JSONObject factjson = new JSONObject( );
+	factjson.put("userid", userid);
+	factjson.put("obsvalue", $obsvaluehigh );
+	factjson.put("facttxt", rulename);
+	System.out.println( factjson.toString( ) );
+
+	Fact $fact = new Fact( );
+	$fact.setFactid( 999 );
+	$fact.setFacttype ( 0 );
+	$fact.setFactname( factname );
+	$fact.setFacttxt( facttxt );
+	$fact.setFactjson( factjson.toString( ) );
+	insert( $fact );
+
+   	System.out.println( "==>weightwatcher " + rulename + ":" + $obsvaluehigh );
+end
+
+rule "ruleChangeWeight"
+   	salience -1000
+   	no-loop true
+when
+    $participant : Participant()
+	$goal : Goal( userid == $participant.userid, goalname == "weight" )
+    $obsvaluelow : Number( doubleValue > 0 ) from accumulate(
+    	Observation( $obsvalue : obsvalue > 0, $participant.userid == userid, obsname == "weight" ) over window:time( 30d ),
+    	min( $obsvalue ) )
+then
+	Date today = new Date( ); 
+    java.util.Date date = new Date( );
+    SimpleDateFormat sdf = new SimpleDateFormat( "yyyy-M-d HH:mm:ss zzz" );
+    String datef = sdf.format( date );
+
+    Integer start = new Integer( $goal.getStart( ) );
+	Double $startweight = start.doubleValue( );
+    Double $percentchange = 100.0*($startweight - $obsvaluelow.doubleValue())/$startweight;
+
+	String rulename= new String( drools.getRule().getName( ) );
+	Integer userid = $participant.getUserid( );
+	String factname = new String( "Watch" );
+	String username = new String( $participant.getUsername( ) );
+	String facttxt = new String( "Weightwatcher says that " + username + " WEIGHT change was " + 
+	String.format( "%.2f", $percentchange ) + "% over the past 30 days" );
+
+	JSONObject factjson = new JSONObject( );
+	factjson.put("userid", userid);
+	factjson.put("obsvalue", $percentchange );
+	factjson.put("facttxt", rulename);
+	System.out.println( factjson.toString( ) );
+
+	Fact $fact = new Fact( );
+	$fact.setFactid( 999 );
+	$fact.setFacttype ( 0 );
+	$fact.setFactname( factname );
+	$fact.setFacttxt( facttxt );
+	$fact.setFactjson( factjson.toString( ) );
+	insert( $fact );
+
+   	System.out.println( "==>weightwatcher " + rulename + ":" + $percentchange );
+end
