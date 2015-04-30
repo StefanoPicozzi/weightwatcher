@@ -1,31 +1,24 @@
 JBoss BRMS 6 weightwatcher Demo
 ===============================
 
-weightwatcher is a stateless Decision Server based on JBoss BRMS 6.1. This project is to automate the deployment for both traditional and container based options.
+weightwatcher is a demonstration application of a stateless Decision Server based on JBoss BRMS 6.1 and includes support for complex event processing (CEP) use cases based on a pseudo clock.  
 
-Both options require a manual configuration step to create the kie-server. This will be automated once a REST API for kie-server instance creation is made available. Configure the server from the Deply tab of the workbench with settings such as:
+Examples provided include a (REST) client sending a time series of facts in the form of weight observations to the Decision Server.  The Decision Server then reasons over the inputs to derive CEP insights such as average weight, least weight and weight change of a rolling time window. These insights are returned to the calling client as facts.
 
-Endpoint: http://localhost:8080/kie-server/
-
-Name: weightwatcher
-
-Username: spicozzi
-
-Password: jbossbrms1!
-
-
-Download and install the Soap-UI to try out the test suite of REST invocations located as a Soap-UI project in the test directory. Edit endpoints as necessary to reflect your installation.
+This project provides instructions to automate the deployment for both traditional and container based options. Instalation instructions for OpenShift V3 will be added later in H1, 2016.  To inspect, clone this repository and review the documentation in the docs directory, summarised as follows.
 
 Traditional Deployment
 -----------------------
 
-Download and unzip.
+Clone this repository.
 
 Add product installers to installs directory.
 
 Run 'init.sh'.
 
 Login to http://localhost:8080/business-central (u:spicozzi / p:jbossbrms1! )
+
+Follow the quick start guide.
 
 Enjoy installed and configured JBoss BRMS 6.
 
@@ -34,7 +27,7 @@ Container Deployment
 
 The following steps can be used to configure and run the demo in a docker container
 
-Download and unzip.
+Clone this repository.
 
 Add product installers to installs directory.
 
@@ -47,6 +40,8 @@ Start demo container
 docker run -it -p 8080:8080 -p 9990:9990 spicozzi/weightwatcher
 
 Login to http://<DOCKER_HOST>:8080/business-central (u:spicozzi / p:jbossbrms1! )
+
+Follow the quick start guide from section 2.
 
 Enjoy installed and configured JBoss BRMS 6.
 
