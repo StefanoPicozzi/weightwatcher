@@ -18,8 +18,8 @@
 ##:q!
 
 upstream weightwatcher {
-        server 192.168.59.103:8080;
-        server 192.168.59.103:8081;
+        server localhost:8080;
+        server localhost:8081;
 }
 
 
