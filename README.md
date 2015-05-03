@@ -39,7 +39,7 @@ Start demo container
 
 docker run -it -p 8080:8080 -p 9990:9990 spicozzi/weightwatcher
 
-Login to http://<DOCKER_HOST>:8080/business-central (u:spicozzi / p:jbossbrms1! )
+Login to http://<CONTAINER_HOST>:8080/business-central (u:spicozzi / p:jbossbrms1! )
 
 Follow the quick start guide from section 2.
 
@@ -48,6 +48,12 @@ Enjoy installed and configured JBoss BRMS 6.
 If using boot2docker locate your instance IP address using:
 
 $ boot2docker ip
+
+To run multiple demo comtainers on the same host:
+
+docker run -it -p 8081:8080 -p 9991:9990 spicozzi/weightwatcher
+
+Login to http://<CONTAINER_HOST>:8080/business-central (u:spicozzi / p:jbossbrms1! )
 
 Supporting Articles
 
