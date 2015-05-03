@@ -15,7 +15,7 @@
 # file but keep this around for reference. Or just disable in sites-enabled.
 #
 # Please see /usr/share/doc/nginx-doc/examples/ for more detailed examples.
-##
+##:q!
 
 upstream weightwatcher {
         server 192.168.59.103:8080;
