@@ -15,10 +15,13 @@ ENV EAP_VERSION_MAJOR 6
 ENV EAP_VERSION_MINOR 4
 ENV EAP_VERSION_MICRO 0
 
-COPY -r target-prebuilt $BRMS_HOME
-
 # Swtich back to root user to perform cleanup
 USER root
+
+# Apply the prebuilt option
+COPY weightwatcher.zip /opt/jboss/brms/weightwatcher.zip
+RUN unzip /opt/jboss/brms/weightwatcher.zip -d /opt/jboss/brms/
+COPY support/jboss-eap-6.4/repository/settings.xml.docker $BRMS_HOME/repository/.settings.xml
 
 # Fix permissions on support files
 RUN chown -R jboss:jboss $BRMS_HOME

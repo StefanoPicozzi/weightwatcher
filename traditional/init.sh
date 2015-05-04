@@ -7,9 +7,8 @@ JBOSS_HOME=./target/jboss-eap-6.4
 SERVER_DIR=$JBOSS_HOME/standalone/deployments
 SERVER_CONF=$JBOSS_HOME/standalone/configuration/
 SERVER_BIN=$JBOSS_HOME/bin
-SRC_DIR=./installs
+SRC_DIR=../installs
 SUPPORT_DIR=./support
-SUPPORT_DIR_PLAIN=./support_plain
 PRJ_DIR=./projects
 BRMS=jboss-brms-6.1.0.GA-installer.jar
 EAP=jboss-eap-6.4.0-installer.jar
@@ -45,11 +44,11 @@ fi
 # Run application defaults.
 echo "Copying weightwatcher configuration files and settings"
 echo
-cp -r $SUPPORT_DIR_PLAIN/jboss-eap-6.4/ $JBOSS_HOME
+cp -r $SUPPORT_DIR/jboss-eap-6.4/ $JBOSS_HOME
 
 echo "Setting up custom maven settings so KieScanner finds repo updates..."
 echo
-cp $SUPPORT_DIR_PLAIN/jboss-eap-6.4/repository/settings.xml.traditional $JBOSS_HOME/repository/.settings.xml
+cp $SUPPORT_DIR/jboss-eap-6.4/repository/settings.xml.traditional $JBOSS_HOME/repository/.settings.xml
 
 # Add execute permissions to the standalone.sh script.
 echo "Making sure standalone.sh for server is executable..."
