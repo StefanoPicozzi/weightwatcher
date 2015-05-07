@@ -16,7 +16,7 @@ Add product installers to installs directory.
 
 Run 'init.sh'.
 
-Login to http://localhost:8080/business-central (u:spicozzi / p:jbossbrms1! )
+Login to http://localhost:8080/business-central (u:erics / p:jbossbrms1! )
 
 Follow the quick start guide.
 
@@ -29,7 +29,9 @@ The following steps can be used to configure and run the demo in a docker contai
 
 Clone this repository.
 
-Add product installers to installs directory.
+Change to the container dubdirectory
+
+Add runtime zip file  to installs directory.
 
 Build demo image
 
@@ -39,7 +41,7 @@ Start demo container
 
 docker run -it -p 8080:8080 -p 9990:9990 spicozzi/weightwatcher
 
-Login to http://<CONTAINER_HOST>:8080/business-central (u:spicozzi / p:jbossbrms1! )
+Login to http://<CONTAINER_HOST>:8080/business-central (u:erics / p:jbossbrms1! )
 
 Follow the quick start guide from section 2.
 
@@ -53,7 +55,7 @@ To run multiple demo comtainers on the same host:
 
 docker run -it -p 8081:8080 -p 9991:9990 spicozzi/weightwatcher
 
-Login to http://<CONTAINER_HOST>:8080/business-central (u:spicozzi / p:jbossbrms1! )
+Login to http://<CONTAINER_HOST>:8080/business-central (u:erics / p:jbossbrms1! )
 
 Supporting Articles
 
