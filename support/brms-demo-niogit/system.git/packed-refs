@@ -1,0 +1,6 @@
+# pack-refs with: peeled
+4b70765965d7617d12c0ad79543d40324cf8ba68 refs/heads/erics-uf-user
+eb745f773511cf0cbdf81e29755e246104b17dc9 refs/heads/master
+6c58b30d98caa1c8a1148ec2a8c07df0cde7a76c refs/heads/servers
+efaf1f7bcd8811acb7e7e6e9f855701e4f67beae refs/heads/social
+c533f77a2db1b7601f6c8510da64f8d5c4d42a88 refs/heads/spicozzi-uf-user
