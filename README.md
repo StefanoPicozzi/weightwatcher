@@ -66,3 +66,5 @@ To Do
 * Add demo section describing test cases for REST Mgmt API samples
 * Add Decision Server container to public repository
 * Add delayed init/profile/shell_script to autostart kie container using curl PUT
+* OpenShift V3 deployment instructions
+* Guide decision table alternative to GAS scoring
