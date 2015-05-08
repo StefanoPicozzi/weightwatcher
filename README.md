@@ -29,9 +29,7 @@ The following steps can be used to configure and run the demo in a docker contai
 
 Clone this repository.
 
-Change to the container dubdirectory
-
-Add runtime zip file  to installs directory.
+Add runtime zip file to installs directory.
 
 Build demo image
 
