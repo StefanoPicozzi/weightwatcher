@@ -39,7 +39,7 @@ Start demo container
 
 docker run -it -p 8080:8080 -p 9990:9990 spicozzi/weightwatcher
 
-Login to http://<CONTAINER_HOST>:8080/business-central (u:erics / p:jbossbrms1! )
+Login to http://<<CONTAINER_HOST>>:8080/business-central (u:erics / p:jbossbrms1! )
 
 Follow the quick start guide from section 2.
 
@@ -53,7 +53,7 @@ To run multiple demo comtainers on the same host:
 
 docker run -it -p 8080:8080 -p 9090:9090 spicozzi/weightwatcher
 
-Login to http://<CONTAINER_HOST>:8080/business-central (u:erics / p:jbossbrms1! )
+Login to http://<<CONTAINER_HOST>>:8080/business-central (u:erics / p:jbossbrms1! )
 
 Supporting Articles
 
