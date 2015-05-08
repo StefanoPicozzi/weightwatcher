@@ -51,7 +51,7 @@ $ boot2docker ip
 
 To run multiple demo comtainers on the same host:
 
-docker run -it -p 8081:8080 -p 9991:9990 spicozzi/weightwatcher
+docker run -it -p 8080:8080 -p 9090:9090 spicozzi/weightwatcher
 
 Login to http://<CONTAINER_HOST>:8080/business-central (u:erics / p:jbossbrms1! )
 
