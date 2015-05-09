@@ -58,6 +58,7 @@ Login to http://CONTAINER_HOST:8080/business-central (u:erics / p:jbossbrms1! )
 Supporting Articles
 -------------------
 http://blog.emergitect.com/2015/05/09/weightwatcher/
+
 http://blog.emergitect.com/2014/12/08/really-simple-rules-service/
 
 To Do
