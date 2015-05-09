@@ -63,8 +63,9 @@ To Do
 -----
 
 * Convert to maven project so that build is automated
+* Move repository to externally mountable volume
+* Guided decision table alternative to GAS scoring
 * Add demo section describing test cases for REST Mgmt API samples
-* Add Decision Server container to public repository
-* Add delayed init/profile/shell_script to autostart kie container using curl PUT
+* Add Decision Server container to a public repository
+* Redesign heartbeat.sh as container service
 * OpenShift V3 deployment instructions
-* Guide decision table alternative to GAS scoring
