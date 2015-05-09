@@ -56,7 +56,8 @@ docker run -it -p 8080:8080 -p 9090:9090 spicozzi/weightwatcher
 Login to http://CONTAINER_HOST:8080/business-central (u:erics / p:jbossbrms1! )
 
 Supporting Articles
-
+-------------------
+http://blog.emergitect.com/2015/05/09/weightwatcher/
 http://blog.emergitect.com/2014/12/08/really-simple-rules-service/
 
 To Do
