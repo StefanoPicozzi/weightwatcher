@@ -21,6 +21,8 @@ USER root
 # Apply the prebuilt option
 COPY installs/jboss-eap-6.4.zip /opt/jboss/brms/jboss-eap-6.4.zip
 RUN unzip /opt/jboss/brms/jboss-eap-6.4.zip -d /opt/jboss/brms/
+RUN cp /opt/jboss/brms/jboss-eap-6.4/repository.tar /opt/jboss/.m2
+RUN cd /opt/jboss/.m2; tar xvf /opt/jboss/.m2/repository.tar
 
 # Fix permissions on support files
 RUN chown -R jboss:jboss $BRMS_HOME
