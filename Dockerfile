@@ -20,18 +20,22 @@ USER root
 
 # Apply the prebuilt option
 COPY installs/jboss-eap-6.4.zip /opt/jboss/brms/jboss-eap-6.4.zip
+COPY container/start.* /opt/jboss/
 RUN unzip /opt/jboss/brms/jboss-eap-6.4.zip -d /opt/jboss/brms/
 RUN cp /opt/jboss/brms/jboss-eap-6.4/repository.tar /opt/jboss/.m2
 RUN cd /opt/jboss/.m2; tar xvf /opt/jboss/.m2/repository.tar
 
 # Fix permissions on support files
 RUN chown -R jboss:jboss $BRMS_HOME
+RUN chmod 755 start.sh
 
 # Run as JBoss 
 USER jboss
 
 # Expose Ports
-EXPOSE 9990 9999 8080
+EXPOSE 9990 9999 9090 8080
 
 # Run BRMS
-CMD ["/opt/jboss/brms/jboss-eap-6.4/bin/standalone.sh","-c","standalone.xml","-b", "0.0.0.0","-bmanagement","0.0.0.0"]
+CMD ["/opt/jboss/brms/jboss-eap-6.4/bin/standalone.sh", "-c", "standalone.xml", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]
+# CMD /opt/jboss/brms/jboss-eap-6.4/bin/standalone.sh -c standalone.xml -b 0.0.0.0 -bmanagement 0.0.0.0 && ./start.sh
+
