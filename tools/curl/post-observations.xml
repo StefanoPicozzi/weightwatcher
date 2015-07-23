@@ -1,0 +1,80 @@
+<batch-execution lookup="watchsession" >
+	<insert-elements return-object="false">
+	
+		<com.redhat.weightwatcher.Fact>
+			<factid>1</factid>
+			<facttype>1</facttype>
+			<factname>Participant</factname>
+			<factjson>{ "userid" : 1, "username" : "bfskinner@behaviorist.org" }</factjson>
+			<facttxt>Incoming Participant JSON</facttxt>
+		</com.redhat.weightwatcher.Fact>
+		<com.redhat.weightwatcher.Fact>
+			<factid>2</factid>
+			<facttype>1</facttype>
+			<factname>Participant</factname>
+			<factjson>{ "userid" : 2, "username" : "ipavlov@behaviorist.org" }</factjson>
+			<facttxt>Incoming Participant JSON</facttxt>
+		</com.redhat.weightwatcher.Fact>
+		
+		<com.redhat.weightwatcher.Fact>
+			<factid>1</factid>
+			<facttype>1</facttype>
+			<factname>Goal</factname>
+			<factjson>{ "userid" : 2, "goalname" : "weight", target : 65, start : 75, low : 60, high : 68 }</factjson>
+			<facttxt>Incoming Goal JSON</facttxt>
+		</com.redhat.weightwatcher.Fact>
+		<com.redhat.weightwatcher.Fact>
+			<factid>2</factid>
+			<facttype>1</facttype>
+			<factname>Goal</factname>
+			<factjson>{ "userid" : 1, "goalname" : "weight", target : 75, start : 84, low : 70, high : 78 }</factjson>
+			<facttxt>Incoming Goal JSON</facttxt>
+		</com.redhat.weightwatcher.Fact>
+		
+		<com.redhat.weightwatcher.Fact>
+			<factid>1</factid>
+			<facttype>1</facttype>
+			<factname>Observation</factname>
+			<factjson>{ "userid" : 1, "obsdate" : "2015-04-20 07:15:00 EST", "obsname" : "weight", "obsvalue" : 80 }</factjson>
+			<facttxt>Incoming Observation JSON</facttxt>
+		</com.redhat.weightwatcher.Fact>
+		<com.redhat.weightwatcher.Fact>
+			<factid>2</factid>
+			<facttype>1</facttype>
+			<factname>Observation</factname>
+			<factjson>{ "userid" : 1, "obsdate" : "2015-04-21 08:15:00 EST", "obsname" : "weight", "obsvalue" : 79 }</factjson>
+			<facttxt>Incoming Observation JSON</facttxt>
+		</com.redhat.weightwatcher.Fact>
+		<com.redhat.weightwatcher.Fact>
+			<factid>3</factid>
+			<facttype>1</facttype>
+			<factname>Observation</factname>
+			<factjson>{ "userid" : 1, "obsdate" : "2015-04-22 09:15:00 EST", "obsname" : "weight", "obsvalue" : 78 }</factjson>
+			<facttxt>Incoming Observation JSON</facttxt>
+		</com.redhat.weightwatcher.Fact>
+		<com.redhat.weightwatcher.Fact>
+			<factid>4</factid>
+			<facttype>1</facttype>
+			<factname>Observation</factname>
+			<factjson>{ "userid" : 2, "obsdate" : "2015-04-20 05:15:00 EST", "obsname" : "weight", "obsvalue" : 70 }</factjson>
+			<facttxt>Incoming Observation JSON</facttxt>
+		</com.redhat.weightwatcher.Fact>
+		<com.redhat.weightwatcher.Fact>
+			<factid>6</factid>
+			<facttype>1</facttype>
+			<factname>Observation</factname>
+			<factjson>{ "userid" : 2, "obsdate" : "2015-04-21 06:15:00 EST", "obsname" : "weight", "obsvalue" : 69 }</factjson>
+			<facttxt>Incoming Observation JSON</facttxt>
+		</com.redhat.weightwatcher.Fact>
+		<com.redhat.weightwatcher.Fact>
+			<factid>4</factid>
+			<facttype>1</facttype>
+			<factname>Observation</factname>
+			<factjson>{ "userid" : 2, "obsdate" : "2015-04-22 07:15:00 EST", "obsname" : "weight", "obsvalue" : 68 }</factjson>
+			<facttxt>Incoming Observation JSON</facttxt>
+		</com.redhat.weightwatcher.Fact>
+		
+	</insert-elements>
+	<fire-all-rules/>
+	<query out-identifier="Watch" name="getWatch"/>
+</batch-execution>
