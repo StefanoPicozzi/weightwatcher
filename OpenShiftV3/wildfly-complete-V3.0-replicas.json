@@ -1,0 +1,77 @@
+{
+    "kind": "Config",
+    "id": "wildfly-config",
+    "apiVersion": "v1beta1",
+    "name": "JBoss WildFly",
+    "description": "Creates a JBoss WildFly cluster",
+    "items": [
+        {
+            "kind": "Service",
+            "id": "wildfly-http-service",
+            "apiVersion": "v1beta1",
+            "port": 80,
+            "containerPort": 8080,
+            "selector": {
+                "name": "wildflyPod"
+            }
+        },
+        {
+            "kind": "Service",
+            "id": "wildfly-https-service",
+            "apiVersion": "v1beta1",
+            "port": 443,
+            "containerPort": 8443,
+            "selector": {
+                "name": "wildflyPod"
+            }
+        },
+        {
+            "kind": "ReplicationController",
+            "id": "wildflyController",
+            "apiVersion": "v1beta1",
+            "labels": {
+                "name": "wildflyController"
+            },
+            "desiredState": {
+                "replicas": 2,
+                "replicaSelector": {
+                    "name": "wildflyPod"
+                },
+                "podTemplate": {
+                    "desiredState": {
+                        "manifest": {
+                            "id": "wildflyPod",
+                            "version": "v1beta1",
+                            "containers": [
+                                {
+                                    "image": "luksa/wildflycluster",
+                                    "name": "wildfly-container",
+                                    "env": [
+                                        {
+                                            "name": "FOO",
+                                            "value": "BAR"
+                                        }
+                                    ],
+                                    "ports": [
+                                        {
+                                            "hostPort": 9888,
+                                            "containerPort": 8080
+                                        },
+                                        {
+                                            "hostPort": 9443,
+                                            "containerPort": 8443
+                                        }
+                                    ]
+                                }
+                            ],
+                            "volumes": null
+                        }
+                    },
+                    "labels": {
+                        "name": "wildflyPod"
+                    }
+                }
+            }
+        }
+    ]
+}

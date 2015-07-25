@@ -31,7 +31,7 @@
         "name": "weightwatcher-route"
       },
       "spec": {
-        "host": "weighwatcher.cloudapps-GUID.oslab.opentlc.com",
+        "host": "weighwatcher.cloudapps-<GUID>.oslab.opentlc.com",
         "to": {
           "name": "weightwatcher-service"
         }
