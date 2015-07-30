@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<response type="SUCCESS" msg="Container watch successfully called.">
+  <results><execution-results>
+  <result identifier="Watch">
+    <query-results>
+      <identifiers>
+        <identifier>fact</identifier>
+      </identifiers>
+      <row>
+        <com.redhat.weightwatcher.Fact>
+          <factid>999</factid>
+          <facttype>0</facttype>
+          <facttxt>Weightwatcher says that bfskinner@behaviorist.org WEIGHT averaged 78.25 over the past 7 days</facttxt>
+          <factname>Watch</factname>
+          <factjson>{"facttxt":"ruleAverageWeight","userid":1,"obsvalue":78.25}</factjson>
+        </com.redhat.weightwatcher.Fact>
+        <fact-handle external-form="0:17:1467917240:1467917240:17:DEFAULT:NON_TRAIT"/>
+      </row>
+      <row>
+        <com.redhat.weightwatcher.Fact>
+          <factid>999</factid>
+          <facttype>0</facttype>
+          <facttxt>Weightwatcher says that bfskinner@behaviorist.org WEIGHT maximum was 80.00 over the past 30 days</facttxt>
+          <factname>Watch</factname>
+          <factjson>{"facttxt":"ruleHighWeight","userid":1,"obsvalue":80}</factjson>
+        </com.redhat.weightwatcher.Fact>
+        <fact-handle external-form="0:18:992915944:992915944:18:DEFAULT:NON_TRAIT"/>
+      </row>
+      <row>
+        <com.redhat.weightwatcher.Fact>
+          <factid>999</factid>
+          <facttype>0</facttype>
+          <facttxt>Weightwatcher says that bfskinner@behaviorist.org WEIGHT minimum was 80.00 over the past 30 days</facttxt>
+          <factname>Watch</factname>
+          <factjson>{"facttxt":"ruleLowWeight","userid":1,"obsvalue":80}</factjson>
+        </com.redhat.weightwatcher.Fact>
+        <fact-handle external-form="0:19:1990333618:1990333618:19:DEFAULT:NON_TRAIT"/>
+      </row>
+      <row>
+        <com.redhat.weightwatcher.Fact>
+          <factid>999</factid>
+          <facttype>0</facttype>
+          <facttxt>Weightwatcher says that bfskinner@behaviorist.org WEIGHT change was 9.52% over the past 30 days</facttxt>
+          <factname>Watch</factname>
+          <factjson>{"facttxt":"ruleChangeWeight","userid":1,"obsvalue":9.523809523809524}</factjson>
+        </com.redhat.weightwatcher.Fact>
+        <fact-handle external-form="0:20:184348407:184348407:20:DEFAULT:NON_TRAIT"/>
+      </row>
+    </query-results>
+  </result>
+</execution-results></results>
+</response>
+

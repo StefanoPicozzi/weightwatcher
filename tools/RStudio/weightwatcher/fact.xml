@@ -1,0 +1,7 @@
+<com.redhat.weightwatcher.Fact>
+	<factid>$(factid)</factid>
+	<facttype>1</facttype>
+	<factname>$(factname)</factname>
+	<factjson>$(factjson)</factjson>
+	<facttxt>Incoming $(factname) JSON</facttxt>
+</com.redhat.weightwatcher.Fact>

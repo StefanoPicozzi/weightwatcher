@@ -1,0 +1,9 @@
+<batch-execution lookup="watchsession" >
+	<insert-elements return-object="false">
+	
+	$(factbody)
+
+	</insert-elements>
+	<fire-all-rules/>
+	<query out-identifier="Watch" name="getWatch"/>
+</batch-execution>

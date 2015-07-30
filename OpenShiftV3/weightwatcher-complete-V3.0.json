@@ -31,56 +31,85 @@
         "name": "weightwatcher-route"
       },
       "spec": {
-        "host": "weighwatcher.cloudapps-<GUID>.oslab.opentlc.com",
+        "host": "weightwatcher.cloudapps-f563.oslab.opentlc.com",
         "to": {
           "name": "weightwatcher-service"
+        },
+        "tls": {
+          "termination": "edge"
         }
       }
     },
-{
-  "kind": "Pod",
-  "apiVersion": "v1",
-  "metadata": {
-    "name": "weightwatcher",
-    "creationTimestamp": null,
-    "labels": {
-      "name": "weightwatcher"
-    }
-  },
-  "spec": {
-    "containers": [
-      {
-        "name": "weightwatcher",
-        "image": "spicozzi/weightwatcher",
-        "ports": [
+    {
+      "kind": "DeploymentConfig",
+      "apiVersion": "v1",
+      "metadata": {
+        "name": "weightwatcher"
+      },
+      "spec": {
+        "strategy": {
+          "type": "Recreate",
+          "resources": {}
+        },
+        "triggers": [
           {
-            "containerPort": 8080,
-            "protocol": "TCP"
+            "type": "ConfigChange"
           }
         ],
-        "resources": {
-          "limits": {
-            "cpu": "10m",
-            "memory": "500Mi"
+        "replicas": 1,
+        "selector": {
+          "name": "weightwatcher"
+        },
+        "template": {
+          "metadata": {
+            "creationTimestamp": null,
+            "labels": {
+              "name": "weightwatcher"
+            }
+          },
+          "spec": {
+            "containers": [
+              {
+                "name": "weightwatcher",
+                "image": "spicozzi/weightwatcher",
+                "ports": [
+                  {
+                    "name": "weightwatcher-tcp-8080",
+                    "containerPort": 8080,
+                    "protocol": "TCP"
+                  }
+                ],
+                "resources": {
+                  "limits": {
+                    "cpu": "10m",
+                    "memory": "16Mi"
+                  }
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "imagePullPolicy": "IfNotPresent",
+                "capabilities": {},
+                "securityContext": {
+                  "capabilities": {},
+                  "privileged": true
+                },
+                "livenessProbe": {
+                  "tcpSocket": {
+                    "port": 8080
+                  },
+                  "timeoutSeconds": 1,
+                  "initialDelaySeconds": 10
+                }
+              }
+            ],
+            "restartPolicy": "Always",
+            "dnsPolicy": "ClusterFirst",
+            "serviceAccount": "",
+            "nodeSelector": {
+              "region": "primary"
+            }
           }
-        },
-        "terminationMessagePath": "/dev/termination-log",
-        "imagePullPolicy": "IfNotPresent",
-        "capabilities": {},
-        "securityContext": {
-          "capabilities": {},
-          "privileged": true
-        },
-        "nodeSelector": {
-          "region": "primary"
         }
       }
-    ],
-    "restartPolicy": "Always",
-    "dnsPolicy": "ClusterFirst",
-    "serviceAccount": ""
-  },
-  "status": {}
-}
+    }
   ]
 }

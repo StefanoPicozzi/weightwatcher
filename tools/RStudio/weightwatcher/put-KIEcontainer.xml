@@ -1,0 +1,9 @@
+<kie-container>  
+  <container-id>watch</container-id> 
+  <status/>   
+  <release-id>  
+    <group-id>com.redhat.demos</group-id> 
+    <artifact-id>weightwatchers</artifact-id> <version>1.0</version> 
+  </release-id> 
+  <resolved-release-id/> 
+</kie-container>
